@@ -1,8 +1,10 @@
 {
   "extName": {
-    "message": "GitHub Release Downloads"
+    "message": "GitHub Release Downloads",
+    "description": "Extension name"
   },
   "extDescription": {
-    "message": "GitHub repo ve sürüm (release) sayfalarında toplam, sürüm bazlı ve dosya bazlı indirme sayılarını doğal arayüzde gösterir."
+    "message": "GitHub repo ve sürüm sayfalarında toplam, sürüm ve dosya bazlı indirme sayılarını gösterir.",
+    "description": "Extension description"
   }
 }

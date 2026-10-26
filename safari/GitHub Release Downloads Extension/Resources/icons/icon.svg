@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#202731" />
+      <stop offset="100%" stop-color="#0d1117" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="54%" r="48%">
+      <stop offset="0%" stop-color="#2eb86b" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#2eb86b" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="head" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5faff" />
+      <stop offset="100%" stop-color="#d1dbe8" />
+    </linearGradient>
+    <linearGradient id="visor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#141a21" />
+      <stop offset="100%" stop-color="#0a0e13" />
+    </linearGradient>
+    <clipPath id="squircle">
+      <rect x="64" y="64" width="896" height="896" rx="201.6" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#squircle)">
+    <rect x="64" y="64" width="896" height="896" fill="url(#bg)" />
+    <rect x="64" y="64" width="896" height="896" fill="url(#glow)" />
+    <path fill="url(#head)" d="M 512 261 Q 573 261 630 279 Q 696 215 763 200 Q 783 197 786 227 Q 794 292 770 364 C 855 461 845 712 676 763 Q 512 809 348 763 C 179 712 169 461 254 364 Q 230 292 238 227 Q 241 197 261 200 Q 328 215 394 279 Q 451 261 512 261 Z" />
+    <rect x="271.4" y="368.6" width="481.3" height="337.9" rx="148.7" fill="url(#visor)" />
+    <path d="M 512 432.8 L 512 564.6 M 437.7 497.7 L 512 564.6 L 586.3 497.7 M 434.3 639.0 L 589.7 639.0" fill="none" stroke="#3fc759" stroke-width="47.1" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <rect x="72" y="72" width="880" height="880" rx="194" fill="none" stroke="#ffffff" stroke-opacity="0.15" stroke-width="15" />
+</svg>

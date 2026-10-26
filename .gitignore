@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+*.zip
+*.crx
+*.pem
+node_modules/
+.idea/
+.vscode/
+xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+DerivedData/
+build/

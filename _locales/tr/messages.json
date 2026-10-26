@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "GitHub Release Downloads"
+  },
+  "extDescription": {
+    "message": "GitHub repo ve sürüm (release) sayfalarında toplam, sürüm bazlı ve dosya bazlı indirme sayılarını doğal arayüzde gösterir."
+  }
+}

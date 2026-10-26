@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "GitHub Release Downloads"
+  },
+  "extDescription": {
+    "message": "Displays total, per-release, and per-asset download counts natively across GitHub repository and release pages."
+  }
+}

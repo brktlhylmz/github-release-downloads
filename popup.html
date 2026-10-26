@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Release Downloads</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="panel">
+    <div class="row-header">
+      <span id="ui-title" class="title">GitHub Release Downloads</span>
+      <span id="rate-text" class="muted">API: --/--</span>
+    </div>
+
+    <div class="section">
+      <label id="ui-token-label" class="label" for="token-input">Personal Access Token (optional)</label>
+      <input type="password" id="token-input" placeholder="ghp_... / github_pat_..." autocomplete="off" spellcheck="false" />
+      <div class="help">
+        <span id="ui-token-help">Raises API limit from 60/hr to 5,000/hr and enables private repositories.</span>
+        <a id="ui-create-token" href="https://github.com/settings/tokens/new?description=GitHub%20Downloads%20Extension" target="_blank" rel="noopener noreferrer">Create token</a>
+      </div>
+    </div>
+
+    <div class="section row-inline">
+      <div style="flex:1">
+        <label id="ui-lang-label" class="label" for="lang-select">Language</label>
+        <select id="lang-select">
+          <option id="ui-lang-auto" value="auto">Auto</option>
+          <option value="tr">Türkçe</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+      <div style="flex:1">
+        <label id="ui-ttl-label" class="label" for="cache-ttl-select">Cache TTL</label>
+        <select id="cache-ttl-select">
+          <option id="ui-ttl-5" value="5">5 min</option>
+          <option id="ui-ttl-15" value="15" selected>15 min</option>
+          <option id="ui-ttl-30" value="30">30 min</option>
+          <option id="ui-ttl-60" value="60">60 min</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="footer">
+      <button type="button" id="save-settings-btn" class="btn btn-primary">Save</button>
+      <button type="button" id="clear-cache-btn" class="btn">Clear cache</button>
+      <span id="status-msg" class="status"></span>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

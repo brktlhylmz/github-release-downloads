@@ -41,6 +41,7 @@
   }
 }
 
+.gh-dl-overlay-rel-row:focus-visible,
 .gh-dl-native-btn:focus-visible,
 .gh-dl-close-btn:focus-visible,
 .gh-dl-platform-chip:focus-visible,

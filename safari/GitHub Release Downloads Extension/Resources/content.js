@@ -662,6 +662,9 @@
           data-variant="default"
           class="${escapeHtml(btnClass)} gh-dl-native-btn"
           title="${escapeHtml(tooltip)}"
+          aria-label="${escapeHtml(t('downloadsBtn'))}: ${escapeHtml(tooltip)}"
+          aria-haspopup="dialog"
+          aria-controls="gh-dl-popover"
           aria-expanded="${isPopoverOpen}"
         >
           <span data-component="buttonContent" data-align="center" class="${escapeHtml(contentClass)}">
@@ -696,9 +699,9 @@
       return `
         <div class="gh-dl-overlay-header">
           <span class="gh-dl-overlay-title">${escapeHtml(t('overlayTitle'))}</span>
-          <button type="button" class="gh-dl-close-btn" data-action="close" title="${escapeHtml(t('close'))}">${OCTICONS.x}</button>
+          <button type="button" class="gh-dl-close-btn" data-action="close" title="${escapeHtml(t('close'))}" aria-label="${escapeHtml(t('close'))}">${OCTICONS.x}</button>
         </div>
-        <div class="gh-dl-overlay-blank">
+        <div class="gh-dl-overlay-blank" role="alert">
           <div class="gh-dl-error-text">${escapeHtml(currentError)}</div>
           <button type="button" class="gh-dl-retry-btn" data-action="refresh">${escapeHtml(t('retry'))}</button>
         </div>
@@ -713,7 +716,7 @@
       return `
         <div class="gh-dl-overlay-header">
           <span class="gh-dl-overlay-title">${escapeHtml(t('overlayTitle'))}</span>
-          <button type="button" class="gh-dl-close-btn" data-action="close" title="${escapeHtml(t('close'))}">${OCTICONS.x}</button>
+          <button type="button" class="gh-dl-close-btn" data-action="close" title="${escapeHtml(t('close'))}" aria-label="${escapeHtml(t('close'))}">${OCTICONS.x}</button>
         </div>
         <div class="gh-dl-overlay-blank">
           ${escapeHtml(releases.length === 0 ? t('noReleases') : t('noAssets'))}
@@ -739,12 +742,13 @@
                 ${osList
                   .map((item) => {
                     const key = `os:${item.name}`;
-                    const active = activePlatformFilter === key ? 'gh-dl-chip-active' : '';
-                    return `<button type="button" class="gh-dl-platform-chip ${active}" data-platform-filter="${escapeHtml(key)}" title="${escapeHtml(
+                    const isActive = activePlatformFilter === key;
+                    const active = isActive ? 'gh-dl-chip-active' : '';
+                    return `<button type="button" class="gh-dl-platform-chip ${active}" aria-pressed="${isActive}" data-platform-filter="${escapeHtml(key)}" title="${escapeHtml(
                       t('filterByPlatformTitle', { name: item.name, count: formatExact(item.count) })
                     )}">${escapeHtml(item.name)} <strong>${item.pct}%</strong></button>`;
                   })
-                  .join('<span class="gh-dl-dot">·</span>')}
+                  .join('<span class="gh-dl-dot" aria-hidden="true">·</span>')}
               </div>`
             : ''
         }
@@ -755,12 +759,13 @@
                 ${archList
                   .map((item) => {
                     const key = `arch:${item.name}`;
-                    const active = activePlatformFilter === key ? 'gh-dl-chip-active' : '';
-                    return `<button type="button" class="gh-dl-platform-chip ${active}" data-platform-filter="${escapeHtml(key)}" title="${escapeHtml(
+                    const isActive = activePlatformFilter === key;
+                    const active = isActive ? 'gh-dl-chip-active' : '';
+                    return `<button type="button" class="gh-dl-platform-chip ${active}" aria-pressed="${isActive}" data-platform-filter="${escapeHtml(key)}" title="${escapeHtml(
                       t('filterByPlatformTitle', { name: item.name, count: formatExact(item.count) })
                     )}">${escapeHtml(item.name)} <strong>${item.pct}%</strong></button>`;
                   })
-                  .join('<span class="gh-dl-dot">·</span>')}
+                  .join('<span class="gh-dl-dot" aria-hidden="true">·</span>')}
               </div>`
             : ''
         }
@@ -786,13 +791,13 @@
           <button type="button" class="gh-dl-sort-btn" data-action="toggle-sort">
             ${escapeHtml(overlaySortBy === 'downloads' ? t('sortTop') : t('sortLatest'))}
           </button>
-          <button type="button" class="gh-dl-close-btn" data-action="refresh" title="${escapeHtml(t('refresh'))}">${OCTICONS.sync}</button>
-          <button type="button" class="gh-dl-close-btn" data-action="close" title="${escapeHtml(t('close'))}">${OCTICONS.x}</button>
+          <button type="button" class="gh-dl-close-btn" data-action="refresh" title="${escapeHtml(t('refresh'))}" aria-label="${escapeHtml(t('refresh'))}">${OCTICONS.sync}</button>
+          <button type="button" class="gh-dl-close-btn" data-action="close" title="${escapeHtml(t('close'))}" aria-label="${escapeHtml(t('close'))}">${OCTICONS.x}</button>
         </div>
       </div>
       ${breakdownHTML}
       <div class="gh-dl-overlay-filter">
-        <input type="text" id="gh-dl-filter-input" placeholder="${escapeHtml(t('filterPlaceholder'))}" autocomplete="off" spellcheck="false" />
+        <input type="text" id="gh-dl-filter-input" aria-label="${escapeHtml(t('filterPlaceholder'))}" placeholder="${escapeHtml(t('filterPlaceholder'))}" autocomplete="off" spellcheck="false" />
       </div>
       <div class="gh-dl-overlay-list">
         ${sortedReleases.map((rel, i) => renderOverlayRelease(rel, i === 0 && rel.assets.length > 0)).join('')}
@@ -828,9 +833,9 @@
 
     return `
       <div class="gh-dl-overlay-rel ${expanded ? 'gh-dl-rel-open' : ''}" data-tag="${escapeHtml((rel.tag_name || '').toLowerCase())}" data-name="${escapeHtml((rel.name || '').toLowerCase())}">
-        <div class="gh-dl-overlay-rel-row" data-action="toggle-rel">
+        <div class="gh-dl-overlay-rel-row" role="button" tabindex="0" aria-expanded="${expanded ? 'true' : 'false'}" data-action="toggle-rel">
           <div class="gh-dl-overlay-rel-left">
-            <span class="gh-dl-rel-chevron">${OCTICONS.chevronRight}</span>
+            <span class="gh-dl-rel-chevron" aria-hidden="true">${OCTICONS.chevronRight}</span>
             <a href="${sanitizeUrl(rel.html_url)}" class="gh-dl-overlay-rel-tag">${escapeHtml(rel.tag_name)}</a>
             ${rel.prerelease ? `<span class="gh-dl-rel-label">${escapeHtml(t('prerelease'))}</span>` : ''}
           </div>
@@ -924,18 +929,30 @@
         const key = chip.getAttribute('data-platform-filter');
         activePlatformFilter = activePlatformFilter === key ? null : key;
         container.querySelectorAll('[data-platform-filter]').forEach((c) => {
-          c.classList.toggle('gh-dl-chip-active', c.getAttribute('data-platform-filter') === activePlatformFilter);
+          const isCurrent = c.getAttribute('data-platform-filter') === activePlatformFilter;
+          c.classList.toggle('gh-dl-chip-active', isCurrent);
+          c.setAttribute('aria-pressed', String(isCurrent));
         });
         applyOverlayFilters(container);
       });
     });
 
     container.querySelectorAll('[data-action="toggle-rel"]').forEach((row) => {
-      row.addEventListener('click', (e) => {
+      const toggleReleaseRow = (e) => {
         if (e.target.closest('.gh-dl-overlay-rel-tag')) return;
         e.stopPropagation();
         const rel = row.closest('.gh-dl-overlay-rel');
-        if (rel) rel.classList.toggle('gh-dl-rel-open');
+        if (rel) {
+          const isOpen = rel.classList.toggle('gh-dl-rel-open');
+          row.setAttribute('aria-expanded', String(isOpen));
+        }
+      };
+      row.addEventListener('click', toggleReleaseRow);
+      row.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleReleaseRow(e);
+        }
       });
     });
 

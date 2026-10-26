@@ -6,12 +6,28 @@
 
 :root {
     color-scheme: light dark;
-
     --spacing: 20px;
+    --app-bg: #ffffff;
+    --app-fg: #1f2328;
+    --app-muted: #59636e;
+    --app-btn-bg: #0969da;
+    --app-btn-fg: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --app-bg: #0d1117;
+        --app-fg: #e6edf3;
+        --app-muted: #8b949e;
+        --app-btn-bg: #238636;
+        --app-btn-fg: #ffffff;
+    }
 }
 
 html {
     height: 100%;
+    background-color: var(--app-bg);
+    color: var(--app-fg);
 }
 
 body {
@@ -26,6 +42,8 @@ body {
 
     font: -apple-system-short-body;
     text-align: center;
+    background-color: var(--app-bg);
+    color: var(--app-fg);
 }
 
 body:not(.state-on, .state-off) :is(.state-on, .state-off) {
@@ -42,4 +60,15 @@ body.state-off :is(.state-on, .state-unknown) {
 
 button {
     font-size: 1em;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(240, 246, 252, 0.15);
+    background-color: var(--app-btn-bg);
+    color: var(--app-btn-fg);
+    cursor: pointer;
+}
+
+button:focus-visible {
+    outline: 2px solid #58a6ff;
+    outline-offset: 2px;
 }

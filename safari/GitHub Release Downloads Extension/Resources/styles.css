@@ -1,4 +1,55 @@
-/* Native GitHub Primer Styles */
+/* Native GitHub Primer Styles (Light & Dark Mode + High Contrast Accessibility) */
+
+:root {
+  --gh-dl-bg: var(--overlay-bgColor, var(--bgColor-default, var(--color-canvas-overlay, #ffffff)));
+  --gh-dl-bg-subtle: var(--bgColor-muted, var(--color-canvas-subtle, #f6f8fa));
+  --gh-dl-fg: var(--fgColor-default, var(--color-fg-default, #1f2328));
+  --gh-dl-fg-muted: var(--fgColor-muted, var(--color-fg-muted, #656d76));
+  --gh-dl-border: var(--borderColor-default, var(--color-border-default, #d0d7de));
+  --gh-dl-border-muted: var(--borderColor-muted, var(--color-border-muted, #d8dee4));
+  --gh-dl-accent: var(--fgColor-accent, var(--color-accent-fg, #0969da));
+  --gh-dl-danger: var(--fgColor-danger, var(--color-danger-fg, #d1242f));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-color-mode="light"]) {
+    --gh-dl-bg: var(--overlay-bgColor, var(--bgColor-default, var(--color-canvas-overlay, #161b22)));
+    --gh-dl-bg-subtle: var(--bgColor-muted, var(--color-canvas-subtle, #0d1117));
+    --gh-dl-fg: var(--fgColor-default, var(--color-fg-default, #e6edf3));
+    --gh-dl-fg-muted: var(--fgColor-muted, var(--color-fg-muted, #8b949e));
+    --gh-dl-border: var(--borderColor-default, var(--color-border-default, #30363d));
+    --gh-dl-border-muted: var(--borderColor-muted, var(--color-border-muted, #21262d));
+    --gh-dl-accent: var(--fgColor-accent, var(--color-accent-fg, #58a6ff));
+    --gh-dl-danger: var(--fgColor-danger, var(--color-danger-fg, #f85149));
+  }
+}
+
+[data-color-mode="dark"] {
+  --gh-dl-bg: var(--overlay-bgColor, var(--bgColor-default, var(--color-canvas-overlay, #161b22)));
+  --gh-dl-bg-subtle: var(--bgColor-muted, var(--color-canvas-subtle, #0d1117));
+  --gh-dl-fg: var(--fgColor-default, var(--color-fg-default, #e6edf3));
+  --gh-dl-fg-muted: var(--fgColor-muted, var(--color-fg-muted, #8b949e));
+  --gh-dl-border: var(--borderColor-default, var(--color-border-default, #30363d));
+  --gh-dl-border-muted: var(--borderColor-muted, var(--color-border-muted, #21262d));
+  --gh-dl-accent: var(--fgColor-accent, var(--color-accent-fg, #58a6ff));
+  --gh-dl-danger: var(--fgColor-danger, var(--color-danger-fg, #f85149));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gh-dl-rel-chevron {
+    transition: none !important;
+  }
+}
+
+.gh-dl-native-btn:focus-visible,
+.gh-dl-close-btn:focus-visible,
+.gh-dl-platform-chip:focus-visible,
+.gh-dl-sort-btn:focus-visible,
+.gh-dl-sort-assets-btn:focus-visible,
+.gh-dl-retry-btn:focus-visible {
+  outline: 2px solid var(--focus-outlineColor, var(--gh-dl-accent, #0969da));
+  outline-offset: 1px;
+}
 
 .gh-dl-header-li {
   display: inline-flex;
